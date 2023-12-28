@@ -153,6 +153,7 @@ function _activate_poetry() {
 function _activate_pipenv() {
     # unfortunately running pipenv each time we are in a pipenv project directory is slow :(
     if venv_path="$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)"; then
+        source "$venv_path/bin/activate"
         _maybeworkon "$venv_path" "pipenv"
         return 0
     fi
